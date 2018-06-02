@@ -11,7 +11,6 @@ import info.san.globalstock.view.AbstractController;
 import info.san.globalstock.view.products.edit.ProductEditViewController;
 import info.san.globalstock.view.products.show.ProductShowViewController;
 import javafx.beans.Observable;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +33,7 @@ public class ProductsViewController extends AbstractController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductsViewController.class);
 
-    private ObservableList<Product> productList = FXCollections.observableArrayList();
+    private ObservableList<Product> productList;
 
     @FXML
     private TableView<Product> productTableView;
@@ -53,7 +52,6 @@ public class ProductsViewController extends AbstractController {
         this.ean13TableColumn.setCellValueFactory(cellData -> cellData.getValue().getEan13());
         this.nomTableColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
 
-        this.productTableView.setItems(this.productList);
         this.productTableView.getSelectionModel().selectedItemProperty()
                 .addListener(this::onSelectedItem);
 
@@ -144,6 +142,9 @@ public class ProductsViewController extends AbstractController {
         }
     }
 
-
+    public void setProductList(ObservableList<Product> productList) {
+        this.productList = productList;
+        this.productTableView.setItems(this.productList);
+    }
 
 }

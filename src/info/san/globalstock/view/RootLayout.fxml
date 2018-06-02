@@ -7,7 +7,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.san.globalstock.view.RootLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1024.0" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.san.globalstock.view.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -17,6 +17,11 @@
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#showPrefrences" text="Préférences">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="P" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
               <MenuItem mnemonicParsing="false" onAction="#close" text="Quitter">
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="Q" control="UP" meta="UP" shift="UP" shortcut="UP" />

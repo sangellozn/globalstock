@@ -10,4 +10,9 @@ public class ShoppingViewController extends AbstractController {
         this.mainApp.showProductsView();
     }
 
+    @FXML
+    public void onCloseButtonClick() {
+        this.mainApp.close();
+    }
+
 }

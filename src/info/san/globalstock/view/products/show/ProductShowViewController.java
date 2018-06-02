@@ -3,6 +3,7 @@ package info.san.globalstock.view.products.show;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
+import info.san.globalstock.Constants;
 import info.san.globalstock.model.Product;
 import info.san.globalstock.view.AbstractController;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class ProductShowViewController extends AbstractController {
     @FXML
     private Label majLeLabel;
 
-    private DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private DateTimeFormatter df = DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT);
 
     private Consumer<Product> editButtonCallBack;
 

@@ -94,12 +94,16 @@ public class Product {
         private BigDecimal minStock;
         private BigDecimal targetedStock;
         private BigDecimal currentStock;
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
 
 
         public ProductBuilder() {
             this.minStock = BigDecimal.ONE;
             this.targetedStock = BigDecimal.ONE;
             this.currentStock = BigDecimal.ZERO;
+            this.createdAt = LocalDateTime.now();
+            this.updatedAt = LocalDateTime.now();
         }
 
         public ProductBuilder withEan13(String ean13) {
@@ -132,11 +136,21 @@ public class Product {
             return this;
         }
 
+        public ProductBuilder withCreatedAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public ProductBuilder withUpdatedAt(LocalDateTime updatedAt) {
+            this.updatedAt = updatedAt;
+            return this;
+        }
+
         public Product build() {
             Product result = new Product();
 
-            result.setCreatedAt(new SimpleObjectProperty<>(LocalDateTime.now()));
-            result.setUpdatedAt(new SimpleObjectProperty<>(LocalDateTime.now()));
+            result.setCreatedAt(new SimpleObjectProperty<>(this.createdAt));
+            result.setUpdatedAt(new SimpleObjectProperty<>(this.updatedAt));
             result.setEan13(new SimpleStringProperty(this.ean13));
             result.setName(new SimpleStringProperty(this.name));
             result.setDescription(new SimpleStringProperty(this.description));

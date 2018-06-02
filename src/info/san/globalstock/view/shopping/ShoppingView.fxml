@@ -5,12 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="info.san.globalstock.view.shopping.ShoppingViewController">
+<AnchorPane minHeight="800.0" minWidth="1024.0" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.san.globalstock.view.shopping.ShoppingViewController">
    <children>
       <Label layoutX="448.0" layoutY="58.0" prefHeight="17.0" prefWidth="300.0" styleClass="h1" text="Liste de course en cours" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="10.0" />
       <Button fx:id="creerListButton" layoutX="470.0" layoutY="61.0" mnemonicParsing="false" text="Créer liste" />
       <Button fx:id="gererProduitButton" layoutX="899.0" layoutY="761.0" mnemonicParsing="false" onAction="#onGererProduitButtonListClick" text="Gérer les produits" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+      <Button layoutX="14.0" layoutY="722.0" mnemonicParsing="false" onAction="#onCloseButtonClick" text="Quitter" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" />
    </children>
    <stylesheets>
       <URL value="@../../bootstrap3.css" />

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import info.san.globalstock.Constants;
 import info.san.globalstock.model.Product;
 import info.san.globalstock.view.AbstractController;
 import info.san.globalstock.view.products.ProductsViewController.ProductsViewCancelCallback;
@@ -17,7 +18,7 @@ import javafx.scene.control.TextField;
 
 public class ProductEditViewController extends AbstractController {
 
-    private final DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private final DateTimeFormatter df = DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT);
 
     private Product product;
 
