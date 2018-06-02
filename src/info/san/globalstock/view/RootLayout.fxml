@@ -13,6 +13,10 @@
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Accueil">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
               <MenuItem mnemonicParsing="false" onAction="#close" text="Quitter">
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="Q" control="UP" meta="UP" shift="UP" shortcut="UP" />

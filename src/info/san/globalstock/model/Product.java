@@ -87,7 +87,7 @@ public class Product {
         // Nothing.
     }
 
-    public class ProductBuilder {
+    public static class ProductBuilder {
         private String ean13;
         private String name;
         private String description;

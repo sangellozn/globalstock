@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import info.san.globalstock.view.RootLayoutController;
+import info.san.globalstock.view.products.ProductsViewController;
+import info.san.globalstock.view.shopping.ShoppingViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -28,6 +30,9 @@ public class MainApp extends Application {
         this.initRootLayout();
     }
 
+    /**
+     * Initialisation du layout principal.
+     */
     public void initRootLayout() {
         try {
             MainApp.LOGGER.info("Yop");
@@ -39,7 +44,7 @@ public class MainApp extends Application {
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
 
-            this.showProductsView();
+            this.showShoppingView();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(this.rootLayout);
@@ -52,11 +57,27 @@ public class MainApp extends Application {
         }
     }
 
-    private void showProductsView() {
+    public void showShoppingView() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/shopping/ShoppingView.fxml"));
+            AnchorPane shoppingPane = loader.load();
+            ShoppingViewController ctrl = loader.getController();
+            ctrl.setMainApp(this);
+
+            this.rootLayout.setCenter(shoppingPane);
+        } catch (IOException e) {
+            MainApp.LOGGER.error("Error while loading shopping view...", e);
+        }
+    }
+
+    public void showProductsView() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/products/ProductsView.fxml"));
             AnchorPane productsPane = loader.load();
+            ProductsViewController ctrl = loader.getController();
+            ctrl.setMainApp(this);
 
             this.rootLayout.setCenter(productsPane);
         } catch (IOException e) {

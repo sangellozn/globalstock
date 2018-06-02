@@ -1,17 +1,16 @@
 package info.san.globalstock.view;
 
-import info.san.globalstock.MainApp;
+import javafx.fxml.FXML;
 
-public class RootLayoutController {
+public class RootLayoutController extends AbstractController {
 
-    private MainApp mainApp;
+    @FXML
+    public void goToHome() {
+        this.mainApp.showShoppingView();
+    }
 
     public void close() {
         this.mainApp.close();
-    }
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 
 }
