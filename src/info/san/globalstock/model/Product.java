@@ -1,7 +1,7 @@
 package info.san.globalstock.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,10 +16,10 @@ public class Product {
     private ObjectProperty<BigDecimal> minStock;
     private ObjectProperty<BigDecimal> targetedStock;
     private ObjectProperty<BigDecimal> currentStock;
-    private ObjectProperty<LocalDate> createdAt;
-    private ObjectProperty<LocalDate> updatedAt;
+    private ObjectProperty<LocalDateTime> createdAt;
+    private ObjectProperty<LocalDateTime> updatedAt;
 
-    private StringProperty getEan13() {
+    public StringProperty getEan13() {
         return this.ean13;
     }
 
@@ -27,7 +27,7 @@ public class Product {
         this.ean13 = ean13;
     }
 
-    private StringProperty getName() {
+    public StringProperty getName() {
         return this.name;
     }
 
@@ -35,7 +35,7 @@ public class Product {
         this.name = name;
     }
 
-    private StringProperty getDescription() {
+    public StringProperty getDescription() {
         return this.description;
     }
 
@@ -43,7 +43,7 @@ public class Product {
         this.description = description;
     }
 
-    private ObjectProperty<BigDecimal> getMinStock() {
+    public ObjectProperty<BigDecimal> getMinStock() {
         return this.minStock;
     }
 
@@ -51,7 +51,7 @@ public class Product {
         this.minStock = minStock;
     }
 
-    private ObjectProperty<BigDecimal> getTargetedStock() {
+    public ObjectProperty<BigDecimal> getTargetedStock() {
         return this.targetedStock;
     }
 
@@ -59,7 +59,7 @@ public class Product {
         this.targetedStock = targetedStock;
     }
 
-    private ObjectProperty<BigDecimal> getCurrentStock() {
+    public ObjectProperty<BigDecimal> getCurrentStock() {
         return this.currentStock;
     }
 
@@ -67,19 +67,19 @@ public class Product {
         this.currentStock = currentStock;
     }
 
-    private ObjectProperty<LocalDate> getCreatedAt() {
+    public ObjectProperty<LocalDateTime> getCreatedAt() {
         return this.createdAt;
     }
 
-    private void setCreatedAt(ObjectProperty<LocalDate> createdAt) {
+    private void setCreatedAt(ObjectProperty<LocalDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
-    private ObjectProperty<LocalDate> getUpdatedAt() {
+    public ObjectProperty<LocalDateTime> getUpdatedAt() {
         return this.updatedAt;
     }
 
-    private void setUpdatedAt(ObjectProperty<LocalDate> updatedAt) {
+    private void setUpdatedAt(ObjectProperty<LocalDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -97,7 +97,8 @@ public class Product {
 
 
         public ProductBuilder() {
-            this.minStock = BigDecimal.ZERO;
+            this.minStock = BigDecimal.ONE;
+            this.targetedStock = BigDecimal.ONE;
             this.currentStock = BigDecimal.ZERO;
         }
 
@@ -106,21 +107,42 @@ public class Product {
             return this;
         }
 
+        public ProductBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ProductBuilder withDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public ProductBuilder withMinStock(BigDecimal minStock) {
+            this.minStock = minStock;
+            return this;
+        }
+
+        public ProductBuilder withTargetedStock(BigDecimal targetedStock) {
+            this.targetedStock = targetedStock;
+            return this;
+        }
+
+        public ProductBuilder withCurrentStock(BigDecimal currentStock) {
+            this.currentStock = currentStock;
+            return this;
+        }
+
         public Product build() {
             Product result = new Product();
 
-            result.setCreatedAt(new SimpleObjectProperty<>(LocalDate.now()));
-            result.setUpdatedAt(new SimpleObjectProperty<>(LocalDate.now()));
+            result.setCreatedAt(new SimpleObjectProperty<>(LocalDateTime.now()));
+            result.setUpdatedAt(new SimpleObjectProperty<>(LocalDateTime.now()));
             result.setEan13(new SimpleStringProperty(this.ean13));
-
-            // FIXME finir autres propriétés.
-            /*result.set
-            result.set
-            result.set
-            result.set
-            result.set
-            result.set
-            result.set*/
+            result.setName(new SimpleStringProperty(this.name));
+            result.setDescription(new SimpleStringProperty(this.description));
+            result.setMinStock(new SimpleObjectProperty<>(this.minStock));
+            result.setCurrentStock(new SimpleObjectProperty<>(this.currentStock));
+            result.setTargetedStock(new SimpleObjectProperty<>(this.targetedStock));
 
             return result;
         }

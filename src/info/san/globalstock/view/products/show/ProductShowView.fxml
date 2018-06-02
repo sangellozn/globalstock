@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="725.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.san.globalstock.view.products.edit.ProductEditViewController">
+<AnchorPane prefHeight="715.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.san.globalstock.view.products.show.ProductShowViewController">
    <children>
-      <Label fx:id="productEditViewTitle" layoutX="30.0" layoutY="32.0" styleClass="h1" text="Edition d'un produit" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
-         <stylesheets>
-            <URL value="@../../../application.css" />
-            <URL value="@../../../bootstrap3.css" />
-         </stylesheets>
-      </Label>
-      <GridPane layoutX="30.0" layoutY="91.0" prefWidth="524.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
+      <Label styleClass="h1" text="Détail d'un produit" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <GridPane prefWidth="524.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="185.0" />
@@ -43,21 +34,17 @@
             <Label text="Stock actuel :" GridPane.rowIndex="5" />
             <Label text="Créé le :" GridPane.rowIndex="6" />
             <Label text="Dernière mise à jour" GridPane.rowIndex="7" />
-            <TextField fx:id="ean13Field" GridPane.columnIndex="1" />
-            <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextArea fx:id="descriptionField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Spinner fx:id="stockMinimalSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Spinner fx:id="stockCibleSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Spinner fx:id="stockActuelSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="ean13Label" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="nomLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="descriptionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="minStockLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="targetedStockLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="currentStockLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label fx:id="creeLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label fx:id="majLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <Button layoutX="440.0" layoutY="488.0" mnemonicParsing="false" onAction="#save" text="Valider" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="352.0" layoutY="493.0" mnemonicParsing="false" onAction="#cancel" text="Annuler" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="100.0" />
+      <Button layoutX="446.0" layoutY="487.0" mnemonicParsing="false" text="Consommer" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="309.0" layoutY="490.0" mnemonicParsing="false" onAction="#editProduct" text="Editer" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="120.0" />
    </children>
-   <stylesheets>
-      <URL value="@../../../application.css" />
-      <URL value="@../../../bootstrap3.css" />
-   </stylesheets>
 </AnchorPane>
