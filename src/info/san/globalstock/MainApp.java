@@ -16,12 +16,14 @@ import org.slf4j.LoggerFactory;
 
 import info.san.globalstock.model.Product;
 import info.san.globalstock.store.AppData;
+import info.san.globalstock.store.AppData.ListeCourse;
 import info.san.globalstock.view.RootLayoutController;
 import info.san.globalstock.view.parametres.PreferencesViewController;
 import info.san.globalstock.view.products.ProductsViewController;
 import info.san.globalstock.view.shopping.ShoppingViewController;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -67,6 +69,7 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ObservableList<Product> products = FXCollections.observableArrayList();
+    private SimpleObjectProperty<ListeCourse> listeCourse;
 
     @Override
     public void start(Stage primaryStage) {
@@ -102,6 +105,7 @@ public class MainApp extends Application {
                 Unmarshaller um = context.createUnmarshaller();
                 AppData appData = (AppData) um.unmarshal(dataFile);
                 this.products.addAll(appData.getProductList());
+                this.listeCourse = new SimpleObjectProperty<>(appData.getListeCourse());
             } catch (JAXBException e) {
                 MainApp.LOGGER.error("Error while loading data...", e);
             }
@@ -164,6 +168,7 @@ public class MainApp extends Application {
             AnchorPane shoppingPane = loader.load();
             ShoppingViewController ctrl = loader.getController();
             ctrl.setMainApp(this);
+            ctrl.setListeCourse(this.getListeCourse());
 
             this.rootLayout.setCenter(shoppingPane);
         } catch (IOException e) {
@@ -202,13 +207,25 @@ public class MainApp extends Application {
             JAXBContext context = JAXBContext.newInstance(AppData.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(new AppData(this.products), new File(dataFilePath + "/globalStock.xml"));
+            m.marshal(new AppData(this.products, this.listeCourse.get()), new File(dataFilePath + "/globalStock.xml"));
         } catch (PropertyException e) {
             MainApp.LOGGER.error("Error while saving data...", e);
         } catch (JAXBException e) {
             MainApp.LOGGER.error("Error while saving data...", e);
             throw e;
         }
+    }
+
+    public SimpleObjectProperty<ListeCourse> getListeCourse() {
+        return this.listeCourse;
+    }
+
+    public void setListeCourse(SimpleObjectProperty<ListeCourse> listeCourse) {
+        this.listeCourse = listeCourse;
+    }
+
+    public ObservableList<Product> getProducts() {
+        return this.products;
     }
 
 }

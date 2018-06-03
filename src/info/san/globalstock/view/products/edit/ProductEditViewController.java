@@ -44,6 +44,9 @@ public class ProductEditViewController extends AbstractController {
     private Spinner<Integer> stockActuelSpinner;
 
     @FXML
+    private Spinner<Integer> pcbSpinner;
+
+    @FXML
     private Label creeLeLabel;
 
     @FXML
@@ -55,9 +58,10 @@ public class ProductEditViewController extends AbstractController {
 
     @FXML
     private void initialize() {
-        this.stockMinimalSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 0));
-        this.stockCibleSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 0));
+        this.stockMinimalSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1));
+        this.stockCibleSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1));
         this.stockActuelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0));
+        this.pcbSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1));
     }
 
     public void setProductEdit(Product product) {
@@ -87,6 +91,7 @@ public class ProductEditViewController extends AbstractController {
         this.stockActuelSpinner.getValueFactory().setValue(this.product.getCurrentStock().get().intValue());
         this.stockCibleSpinner.getValueFactory().setValue(this.product.getTargetedStock().get().intValue());
         this.stockMinimalSpinner.getValueFactory().setValue(this.product.getMinStock().get().intValue());
+        this.pcbSpinner.getValueFactory().setValue(this.product.getPcb().get().intValue());
         this.creeLeLabel.setText(this.product.getCreatedAt().get().format(this.df));
         this.majLeLabel.setText(this.product.getUpdatedAt().get().format(this.df));
     }
@@ -103,6 +108,7 @@ public class ProductEditViewController extends AbstractController {
         this.product.getName().set(this.nomField.getText());
         this.product.getTargetedStock().set(BigDecimal.valueOf(this.stockCibleSpinner.getValue()));
         this.product.getUpdatedAt().set(LocalDateTime.now());
+        this.product.getPcb().set(BigDecimal.valueOf(this.pcbSpinner.getValue()));
 
         this.productsViewEditCallback.apply(this.product, previousEan13 == null || previousEan13.isEmpty());
     }

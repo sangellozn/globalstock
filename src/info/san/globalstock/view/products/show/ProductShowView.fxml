@@ -24,6 +24,7 @@
             <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
          </rowConstraints>
          <children>
             <Label text="EAN 13 :" />
@@ -32,19 +33,21 @@
             <Label text="Stock minimal :" GridPane.rowIndex="3" />
             <Label text="Stock cible :" GridPane.rowIndex="4" />
             <Label text="Stock actuel :" GridPane.rowIndex="5" />
-            <Label text="Créé le :" GridPane.rowIndex="6" />
-            <Label text="Dernière mise à jour" GridPane.rowIndex="7" />
+            <Label text="Créé le :" GridPane.rowIndex="7" />
+            <Label text="Dernière mise à jour" GridPane.rowIndex="8" />
             <Label fx:id="ean13Label" text="Label" GridPane.columnIndex="1" />
             <Label fx:id="nomLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="descriptionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="minStockLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="targetedStockLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="currentStockLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="creeLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="majLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="creeLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="majLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="PCB" GridPane.rowIndex="6" />
+            <Label fx:id="pcbLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button layoutX="446.0" layoutY="487.0" mnemonicParsing="false" text="Consommer" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="309.0" layoutY="490.0" mnemonicParsing="false" onAction="#editProduct" text="Editer" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="120.0" />
+      <Button layoutX="446.0" layoutY="487.0" mnemonicParsing="false" onAction="#onConsommerButtonAction" text="Consommer" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="309.0" layoutY="490.0" mnemonicParsing="false" onAction="#onEditButtonAction" text="Editer" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="120.0" />
    </children>
 </AnchorPane>

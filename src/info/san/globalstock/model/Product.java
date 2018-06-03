@@ -16,6 +16,7 @@ public class Product {
     private ObjectProperty<BigDecimal> minStock;
     private ObjectProperty<BigDecimal> targetedStock;
     private ObjectProperty<BigDecimal> currentStock;
+    private ObjectProperty<BigDecimal> pcb;
     private ObjectProperty<LocalDateTime> createdAt;
     private ObjectProperty<LocalDateTime> updatedAt;
 
@@ -83,6 +84,14 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
+    public ObjectProperty<BigDecimal> getPcb() {
+        return this.pcb;
+    }
+
+    private void setPcb(ObjectProperty<BigDecimal> pcb) {
+        this.pcb = pcb;
+    }
+
     private Product() {
         // Nothing.
     }
@@ -94,6 +103,7 @@ public class Product {
         private BigDecimal minStock;
         private BigDecimal targetedStock;
         private BigDecimal currentStock;
+        private BigDecimal pcb;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
@@ -102,6 +112,7 @@ public class Product {
             this.minStock = BigDecimal.ONE;
             this.targetedStock = BigDecimal.ONE;
             this.currentStock = BigDecimal.ZERO;
+            this.pcb = BigDecimal.ONE;
             this.createdAt = LocalDateTime.now();
             this.updatedAt = LocalDateTime.now();
         }
@@ -146,6 +157,11 @@ public class Product {
             return this;
         }
 
+        public ProductBuilder withPcb(BigDecimal pcb) {
+            this.pcb = pcb;
+            return this;
+        }
+
         public Product build() {
             Product result = new Product();
 
@@ -157,6 +173,7 @@ public class Product {
             result.setMinStock(new SimpleObjectProperty<>(this.minStock));
             result.setCurrentStock(new SimpleObjectProperty<>(this.currentStock));
             result.setTargetedStock(new SimpleObjectProperty<>(this.targetedStock));
+            result.setPcb(new SimpleObjectProperty<>(this.pcb));
 
             return result;
         }

@@ -33,6 +33,7 @@
             <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
          </rowConstraints>
          <children>
             <Label text="EAN 13 :" />
@@ -41,16 +42,18 @@
             <Label text="Stock minimal :" GridPane.rowIndex="3" />
             <Label text="Stock cible :" GridPane.rowIndex="4" />
             <Label text="Stock actuel :" GridPane.rowIndex="5" />
-            <Label text="Créé le :" GridPane.rowIndex="6" />
-            <Label text="Dernière mise à jour" GridPane.rowIndex="7" />
+            <Label text="Créé le :" GridPane.rowIndex="7" />
+            <Label text="Dernière mise à jour" GridPane.rowIndex="8" />
             <TextField fx:id="ean13Field" GridPane.columnIndex="1" />
             <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextArea fx:id="descriptionField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Spinner fx:id="stockMinimalSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Spinner fx:id="stockCibleSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Spinner fx:id="stockActuelSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="creeLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="majLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="creeLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="majLeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="PCB" GridPane.rowIndex="6" />
+            <Spinner fx:id="pcbSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <Button layoutX="440.0" layoutY="488.0" mnemonicParsing="false" onAction="#save" text="Valider" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="20.0" />

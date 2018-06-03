@@ -22,6 +22,70 @@ public class AppData {
 
     private final String version = "1.0";
 
+    public static final class ListeCourse {
+
+        private Collection<ListeCourseItem> items = new ArrayList<>();
+
+        public static final class ListeCourseItem {
+
+            private String ean13;
+
+            private String name;
+
+            private BigDecimal qty;
+
+            private BigDecimal totalUnit;
+
+            @XmlAttribute
+            public String getEan13() {
+                return this.ean13;
+            }
+
+            public void setEan13(String ean13) {
+                this.ean13 = ean13;
+            }
+
+            @XmlAttribute
+            public BigDecimal getQty() {
+                return this.qty;
+            }
+
+            public void setQty(BigDecimal qty) {
+                this.qty = qty;
+            }
+
+            @XmlAttribute
+            public String getName() {
+                return this.name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            @XmlAttribute
+            public BigDecimal getTotalUnit() {
+                return this.totalUnit;
+            }
+
+            public void setTotalUnit(BigDecimal totalUnit) {
+                this.totalUnit = totalUnit;
+            }
+
+        }
+
+        @XmlElement(name = "item")
+        @XmlElementWrapper(name = "items")
+        public Collection<ListeCourseItem> getItems() {
+            return this.items;
+        }
+
+        public void setItems(Collection<ListeCourseItem> items) {
+            this.items = items;
+        }
+
+    }
+
     public static final class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 
         @Override
@@ -37,11 +101,13 @@ public class AppData {
 
     private List<SimpleProduct> simpleProductList = new ArrayList<>();
 
+    private ListeCourse listeCourse;
+
     public AppData() {
         // For JAXB.
     }
 
-    public AppData(Collection<Product> productsToSave) {
+    public AppData(Collection<Product> productsToSave, ListeCourse listeCourse) {
         for (Product p : productsToSave) {
             SimpleProduct sp = new SimpleProduct();
             sp.setCreatedAt(p.getCreatedAt().get());
@@ -52,9 +118,12 @@ public class AppData {
             sp.setName(p.getName().get());
             sp.setTargetedStock(p.getTargetedStock().get());
             sp.setUpdatedAt(p.getUpdatedAt().get());
+            sp.setPcb(p.getPcb().get());
 
             this.simpleProductList.add(sp);
         }
+
+        this.listeCourse = listeCourse;
     }
 
     public static class SimpleProduct {
@@ -74,6 +143,8 @@ public class AppData {
         private LocalDateTime createdAt;
 
         private LocalDateTime updatedAt;
+
+        private BigDecimal pcb;
 
         @XmlAttribute
         public String getEan13() {
@@ -149,6 +220,15 @@ public class AppData {
             this.updatedAt = updatedAt;
         }
 
+        @XmlAttribute
+        public BigDecimal getPcb() {
+            return this.pcb;
+        }
+
+        public void setPcb(BigDecimal pcb) {
+            this.pcb = pcb;
+        }
+
     }
 
     @XmlElementWrapper(name = "products")
@@ -175,12 +255,20 @@ public class AppData {
                     .withTargetedStock(sp.getTargetedStock())
                     .withCreatedAt(sp.getCreatedAt())
                     .withUpdatedAt(sp.getUpdatedAt())
+                    .withPcb(sp.getPcb())
                     .build());
         }
 
         return result;
     }
 
+    @XmlElement
+    public ListeCourse getListeCourse() {
+        return this.listeCourse;
+    }
 
+    public void setListeCourse(ListeCourse listeCourse) {
+        this.listeCourse = listeCourse;
+    }
 
 }
